@@ -5,7 +5,7 @@ planes = {
 'tarde'],
 'F004': ['Plan Senior', 'trimestral', 3, True, False, 'mañana'],
 'F005': ['Plan Anual Pro', 'anual', 12, True, True, 'libre'],
-'F006': ['Plan Nocturno', 'mensual', 1, False, True, 'noche'],
+'F006': ['Plan Nocturno', 'mensual', 1, False, True, 'noche']
 }
 inscripciones = {
 'F001': [14990, 30],
@@ -13,7 +13,7 @@ inscripciones = {
 'F003': [39990, 0],
 'F004': [35990, 6],
 'F005': [159990, 2],
-'F006': [18990, 15],
+'F006': [18990, 15]
 }
 def validacion_int(msg):
     while True:
@@ -25,6 +25,29 @@ def validacion_int(msg):
                 return valor
         except ValueError:
             print("ERROR: ¡El valor ha de ser entero númerico!")
+def validacion_string(msg):
+    while True:
+        texto = (input(msg))
+        texto = texto.strip()
+        texto = texto.lower()
+        if len(texto) <= 2:
+            print("ERROR: ¡El texto no puede estár practicamente vacío!")
+        else:
+            return texto
+def cupos_tipo(tipo):
+    while True:
+        existencia = False
+        total_cupos = 0
+        for codigo, datos in planes.items():
+            if tipo == datos[1]:
+                existencia = True
+                total_cupos += inscripciones[codigo][1]
+        if existencia == False:
+            print("ERROR: ¡No se encontró ningun plan!")
+            return
+        elif existencia == True:
+            print(f"El total de cupos disponibles es: {total_cupos}")
+            return
 while True:
     print("""
 ========== MENÚ PRINCIPAL ==========
@@ -35,11 +58,12 @@ while True:
 5. Eliminar plan
 6. Salir
 =====================================""")
-    opcion = validacion_int("Ingrese opción:")
+    opcion = validacion_int("Ingrese opción: ")
     if opcion < 1 or opcion > 6:
         print("ERROR: ¡Escoja una opción del 1 hasta al 6!")
     elif opcion == 1:
-        print("DEBUG")
+        tipo = validacion_string("Ingrese tipo de plan a consultar: ")
+        cupos_tipo(tipo)
     elif opcion == 2:
         print("DEBUG")
     elif opcion == 3:

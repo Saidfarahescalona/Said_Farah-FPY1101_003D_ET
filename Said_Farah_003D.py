@@ -15,3 +15,39 @@ inscripciones = {
 'F005': [159990, 2],
 'F006': [18990, 15],
 }
+def validacion_int(msg):
+    while True:
+        try:
+            valor = int(input(msg))
+            if valor <=0:
+                print("ERROR: ¡El valor ha de ser mayor a 0!")
+            else:
+                return valor
+        except ValueError:
+            print("ERROR: ¡El valor ha de ser entero númerico!")
+while True:
+    print("""
+========== MENÚ PRINCIPAL ==========
+1. Cupos por tipo de plan
+2. Búsqueda de planes por rango de precio
+3. Actualizar precio de plan
+4. Agregar plan
+5. Eliminar plan
+6. Salir
+=====================================""")
+    opcion = validacion_int("Ingrese opción:")
+    if opcion < 1 or opcion > 6:
+        print("ERROR: ¡Escoja una opción del 1 hasta al 6!")
+    elif opcion == 1:
+        print("DEBUG")
+    elif opcion == 2:
+        print("DEBUG")
+    elif opcion == 3:
+        print("DEBUG")
+    elif opcion == 4:
+        print("DEBUG")
+    elif opcion == 5:
+        print("DEBUG")
+    elif opcion == 6:
+        print("DEBUG")
+        break

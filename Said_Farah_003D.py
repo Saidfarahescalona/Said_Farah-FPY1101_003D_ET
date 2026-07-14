@@ -269,5 +269,5 @@ while True:
         elif exito == False:
             print("El código no existe")
     elif opcion == 6:
-        print("DEBUG")
+        print("Programa finalizado.")
         break

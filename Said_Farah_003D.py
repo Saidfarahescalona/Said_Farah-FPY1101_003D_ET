@@ -119,8 +119,8 @@ def validador_cupos(cupos):
 def agregar_plan(codigo, nombre, tipo, duracion, piscina, clases, horario, precio, cupos):
     lista_planes = [nombre, tipo, duracion, piscina, clases, horario]
     lista_inscripciones = [precio, cupos]
-    planes.append(codigo:lista_planes)
-    inscripciones.append(codigo:lista_inscripciones)
+    #planes.append(codigo:lista_planes)
+    #inscripciones.append(codigo:lista_inscripciones)
 while True:
     print("""
 ========== MENÚ PRINCIPAL ==========

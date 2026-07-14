@@ -50,10 +50,15 @@ def cupos_tipo(tipo):
             return
 def busqueda_precio(p_min, p_max):
     resultado = []
+    existencia = False
     for codigo, datos in inscripciones.items():
         if datos[0] >= p_min and datos[0] <= p_max and datos[1] > 0:
+            existencia = True
             resultado.append(f"{planes[codigo][0]}--{codigo}")
-    print(f"Los planes encontrados son: {resultado}")
+    if existencia == False:
+        print("No hay planes en ese rango de precios")
+    elif existencia == True:
+        print(f"Los planes encontrados son: {resultado}")
 while True:
     print("""
 ========== MENÚ PRINCIPAL ==========

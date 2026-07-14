@@ -19,12 +19,12 @@ def validacion_int(msg):
     while True:
         try:
             valor = int(input(msg))
-            if valor <=0:
-                print("ERROR: ¡El valor ha de ser mayor a 0!")
+            if valor <0:
+                print("ERROR: ¡El valor ha de ser mayor o igual a 0!")
             else:
                 return valor
         except ValueError:
-            print("ERROR: ¡El valor ha de ser entero númerico!")
+            print("ERROR: ¡Debe ingresar valores enteros!")
 def validacion_string(msg):
     while True:
         texto = (input(msg))
@@ -48,6 +48,12 @@ def cupos_tipo(tipo):
         elif existencia == True:
             print(f"El total de cupos disponibles es: {total_cupos}")
             return
+def busqueda_precio(p_min, p_max):
+    resultado = []
+    for codigo, datos in inscripciones.items():
+        if datos[0] >= p_min and datos[0] <= p_max and datos[1] > 0:
+            resultado.append(f"{planes[codigo][0]}--{codigo}")
+    print(f"Los planes encontrados son: {resultado}")
 while True:
     print("""
 ========== MENÚ PRINCIPAL ==========
@@ -65,7 +71,14 @@ while True:
         tipo = validacion_string("Ingrese tipo de plan a consultar: ")
         cupos_tipo(tipo)
     elif opcion == 2:
-        print("DEBUG")
+        while True:
+            p_min = validacion_int("Ingrese precio mínimo: ")
+            p_max = validacion_int("Ingrese precio máximo: ")
+            if p_min > p_max:
+                print(f"ERROR: ¡El precio mínimo ({p_min}) ha de ser mayor que el precio máximo ({p_max})!")
+            else:
+                break
+        busqueda_precio(p_min, p_max)
     elif opcion == 3:
         print("DEBUG")
     elif opcion == 4:

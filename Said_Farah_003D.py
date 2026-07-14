@@ -121,6 +121,13 @@ def agregar_plan(codigo, nombre, tipo, duracion, piscina, clases, horario, preci
     lista_inscripciones = [precio, cupos]
     #planes.append(codigo:lista_planes)
     #inscripciones.append(codigo:lista_inscripciones)
+def eliminar_plan(codigo):
+    if codigo in planes:
+        #planes(codigo) = ""
+        #inscripciones(codigo) = ""
+        return True
+    else:
+        return False
 while True:
     print("""
 ========== MENÚ PRINCIPAL ==========
@@ -254,7 +261,13 @@ while True:
         elif validador == False:
             print("Codigo ya existente")
     elif opcion == 5:
-        print("DEBUG")
+        codigo = validacion_string("Ingrese el código del plan: ")
+        codigo = codigo.upper()
+        exito = eliminar_plan(codigo)
+        if exito == True:
+            print("Plan eliminado")
+        elif exito == False:
+            print("El código no existe")
     elif opcion == 6:
         print("DEBUG")
         break

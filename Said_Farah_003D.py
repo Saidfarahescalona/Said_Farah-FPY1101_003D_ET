@@ -59,6 +59,13 @@ def busqueda_precio(p_min, p_max):
         print("No hay planes en ese rango de precios")
     elif existencia == True:
         print(f"Los planes encontrados son: {resultado}")
+def actualizar_precio(codigo, nuevo_precio):
+    if codigo in inscripciones:
+        inscripciones[codigo][0] = nuevo_precio
+        return True
+    else:
+        return False
+
 while True:
     print("""
 ========== MENÚ PRINCIPAL ==========
@@ -85,7 +92,27 @@ while True:
                 break
         busqueda_precio(p_min, p_max)
     elif opcion == 3:
-        print("DEBUG")
+        while True:
+            codigo = validacion_string("Ingrese código del plan: ")
+            codigo = codigo.upper()
+            nuevo_precio = validacion_int("Ingrese nuevo precio: ")
+            existencia = actualizar_precio(codigo, nuevo_precio)
+            if existencia == True:
+                print("Precio actualizado")
+            elif existencia == False:
+                print("El código no existe")
+            while True:
+                eleccion = input("¿Desea actualizar otro precio (s/n)?: ")
+                eleccion = eleccion.strip()
+                eleccion = eleccion.lower()
+                if len(eleccion) > 1 or len(eleccion) < 1:
+                    print("ERROR: ¡Ingrese o 's' para SÍ o 'n' para NO!")
+                else:
+                    break
+            if eleccion == "s":
+                continue
+            elif eleccion == "n":
+                break
     elif opcion == 4:
         print("DEBUG")
     elif opcion == 5:
